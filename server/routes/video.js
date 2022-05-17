@@ -50,7 +50,7 @@ router.post('/uploadVideo', (req, res) => {
     // 비디오 정보들을 db에 저장한다.
     const video = new Video(req.body) // req.body -> 모든 variables의 정보를 video에 담아준다
 
-    video.save((err, doc) => {
+    video.save((err, doc) => { // video의 정보를 db에 저장한다.
         if(err) return res.json({ success: false, err })
         res.status(200).json({ success: true })
     })

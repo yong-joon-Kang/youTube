@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const videoSchema = mongoose.Schema({
     writer: {
-        type:Schema.Types.ObjectId,
+        type:Schema.Types.ObjectId, // User.js를 참조하여 그 속의 모든 정보를 읽을 수 있음
         ref: 'User'
     },
     title: {

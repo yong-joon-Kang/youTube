@@ -6,6 +6,7 @@ const { Video } = require("../models/Video");
 const multer = require("multer");
 var ffmpeg = require("fluent-ffmpeg");
 
+//START::저장할 파일 관련, 속성 세팅
 var storage = multer.diskStorage({
     destination: (req, file, cb) => { /* destination = 파일 업로드시 어디에 저장이 될지 */
         cb(null, 'uploads/')
@@ -23,6 +24,9 @@ var storage = multer.diskStorage({
 })
 
 const upload = multer({ storage: storage }).single("file");
+//END::저장할 파일 관련, 속성 세팅
+
+
 
 //=================================
 //             User
@@ -42,6 +46,13 @@ router.post('/uploadfiles', (req, res) => {
 router.get('/getVideos', (req, res) => {
 
     // 비디오를 DB에서 가져와서 클라이언트로 보낸다.
+
+    Video.find()
+        .populate('writer')
+        .exec((err, videos) => {
+            if(err) return res.status(400).send(err);
+            res.status(200).json({ success:true, videos })
+        })
     
 })
 

@@ -67,6 +67,17 @@ router.post('/uploadVideo', (req, res) => {
     })
 })
 
+router.post('/getVideoDetail', (req, res) => {
+    Video.findOne({ "_id" : req.body.videoId }) // 요청받은 id로 DB의 Video Collection(table)의 _id를 찾겠다.
+        .populate('writer')
+        .exec((err, videoDetail) => {
+            console.log(videoDetail)
+            if(err) return res.status(400).send(err)
+            return res.status(200).json({ success: true, videoDetail })
+        })
+    
+})
+
 router.post('/thumbnail', (req, res) => {
     
     // 썸네일 생성, 비디오 러닝타임 가져오기

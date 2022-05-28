@@ -40,7 +40,7 @@ function VideoUploadPage(props) {
     }
 
     const onPrivateChange = (e) => {
-        setDescription(e.currentTarget.value)
+        setPrivate(e.currentTarget.value)
     }
     
     const onCategoryChange = (e) => {

@@ -24,12 +24,12 @@ function LandingPage() {
 
     }, []) /* [] -> 비어있으면 한번만 function을 실행한다. [] -> 이것 조차 없으면 계속 반복하여 실행 */
 
-    const renderCards = Video.map((video, index) => {
+    const renderCards = Video.map(video => {
 
         var minutes = Math.floor(video.duration / 60);
         var seconds = Math.floor(video.duration - minutes * 60);
 
-        return <Col lg={6} md={8} xs={24}>
+        return <Col key={video._id} lg={6} md={8} xs={24}>
         <a href={`/video/${video._id}`} >
             <div style={{ position: 'relative' }}>
                 <img style={{ width: '100%' }} alt="thumbnail" src={`http://localhost:5000/${video.thumbnail}`} />

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Row, Col, List, Avatar } from 'antd'
 import Axios from 'axios'
+import SideVideo from './Sections/SideVideo'
 
 function VideoDetailPage(props) {
 
@@ -16,6 +17,7 @@ function VideoDetailPage(props) {
             .then(response => {
                 console.log(variable)
                 if(response.data.success) {
+                    console.log(response.data)
                     setVideoDetail(response.data.videoDetail)
                 }else {
                     alert('비디오 정보를 가져오는데 실패하였습니다.')
@@ -31,7 +33,7 @@ function VideoDetailPage(props) {
                 <Col lg={18} xs={24}>
                     
                     <div style={{ width: '100%', padding:'3rem 4rem' }}>
-                        <video style={{ width: '100%' }} src={'http://localhost:5000/${VideoDetail.filePath}'} controls />
+                        <video style={{ width: '100%' }} src={`http://localhost:5000/${VideoDetail.filePath}`} controls />
     
                         <List.Item
                             actions
@@ -47,7 +49,7 @@ function VideoDetailPage(props) {
     
                 </Col>
                 <Col lg={6} xs={24} >
-                    Side Videos
+                    <SideVideo /> {/* SideVideo 컴포넌트 */}
                 </Col>
             </Row>
         )

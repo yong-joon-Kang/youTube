@@ -9,6 +9,7 @@ import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer"
 import VideoUploadPage from './views/VideoUploadPage/VideoUploadPage';
 import VideoDetailPage from './views/VideoDetailPage/VideoDetailPage';
+import SubscriptionPage from './views/SubscriptionPage/SubscriptionPage';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/video/upload" component={Auth(VideoUploadPage, true)} /> {/* true = 로그인한 사용자만 접근 가능 */}
           <Route exact path="/video/:videoId" component={Auth(VideoDetailPage, null)} />
+          <Route exact path="/SubscriptionPage" component={Auth(SubscriptionPage, true)} />
         </Switch>
       </div>
       <Footer />

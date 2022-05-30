@@ -38,7 +38,7 @@ function VideoDetailPage(props) {
                         <video style={{ width: '100%' }} src={`http://localhost:5000/${VideoDetail.filePath}`} controls />
     
                         <List.Item
-                            actions={[<Subscribe userTo={VideoDetail.writer._id} />]} // userTo => Subscribe 컴포넌트로 props를 보냄
+                            actions={[<Subscribe userTo={VideoDetail.writer._id} userFrom={localStorage.getItem('userId')} />]} // userTo, userFrom => Subscribe 컴포넌트로 props를 보냄
                         >
                             <List.Item.Meta
                                 avatar={<Avatar src={VideoDetail.writer.image} />}
